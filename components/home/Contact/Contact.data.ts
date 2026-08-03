@@ -10,6 +10,7 @@ export const CONTACT_CONTENT = {
 	errors: {
 		nameRequired: "Вкажіть ім'я та прізвище.",
 		nameMinLength: "Ім'я має містити щонайменше 2 символи.",
+		nameInvalid: "Ім'я має містити літери.",
 		emailRequired: 'Вкажіть email.',
 		emailInvalid: 'Перевірте правильність email.',
 		phoneRequired: 'Вкажіть номер телефону.',

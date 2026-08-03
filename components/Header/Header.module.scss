@@ -72,20 +72,23 @@
 	span::before,
 	span::after {
 		position: absolute;
+		top: 50%;
+		left: 50%;
 		width: 2.2rem;
 		height: 0.2rem;
 		background: var(--color-white);
 		border-radius: 100rem;
 		transition: transform 0.25s ease, opacity 0.25s ease;
 		content: '';
+		transform: translate(-50%, -50%);
 	}
 
 	span::before {
-		transform: translateY(-0.7rem);
+		transform: translate(-50%, calc(-50% - 0.7rem));
 	}
 
 	span::after {
-		transform: translateY(0.7rem);
+		transform: translate(-50%, calc(-50% + 0.7rem));
 	}
 }
 
@@ -95,11 +98,11 @@
 	}
 
 	span::before {
-		transform: translateY(0) rotate(45deg);
+		transform: translate(-50%, -50%) rotate(45deg);
 	}
 
 	span::after {
-		transform: translateY(0) rotate(-45deg);
+		transform: translate(-50%, -50%) rotate(-45deg);
 	}
 }
 
@@ -127,8 +130,42 @@
 	}
 }
 
-.menuOpen .mobilePanel {
+.mobilePanelOpen {
 	transform: translateX(0);
+}
+
+.mobileClose {
+	position: absolute;
+	top: 3.2rem;
+	right: 2.4rem;
+	width: 3.2rem;
+	height: 3.2rem;
+	background: transparent;
+
+	span,
+	span::before,
+	span::after {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		width: 2.2rem;
+		height: 0.2rem;
+		background: var(--color-white);
+		border-radius: 100rem;
+		content: '';
+	}
+
+	span {
+		background: transparent;
+	}
+
+	span::before {
+		transform: translate(-50%, -50%) rotate(45deg);
+	}
+
+	span::after {
+		transform: translate(-50%, -50%) rotate(-45deg);
+	}
 }
 
 .mobileMenuList {

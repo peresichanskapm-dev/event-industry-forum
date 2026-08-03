@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { isPhoneComplete } from '@/lib/phoneMask';
 import { TRACKING_FIELDS, type TrackingField } from '@/lib/utm';
 
 export const runtime = 'nodejs';
@@ -10,6 +11,13 @@ type Payload = {
 	ticketTitle?: string;
 	formSource?: string;
 } & Partial<Record<TrackingField, string>>;
+
+const NAME_LETTER_PATTERN = /\p{L}/u;
+const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+function escapeHtml(value: string): string {
+	return value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
 
 export async function POST(request: Request) {
 	const token = process.env.TELEGRAM_BOT_TOKEN;
@@ -30,19 +38,31 @@ export async function POST(request: Request) {
 		return NextResponse.json({ error: 'Missing required fields.' }, { status: 400 });
 	}
 
+	if (name.length < 2 || !NAME_LETTER_PATTERN.test(name)) {
+		return NextResponse.json({ error: 'Invalid name.' }, { status: 400 });
+	}
+
+	if (!isPhoneComplete(phone)) {
+		return NextResponse.json({ error: 'Invalid phone.' }, { status: 400 });
+	}
+
+	if (email && !EMAIL_PATTERN.test(email)) {
+		return NextResponse.json({ error: 'Invalid email.' }, { status: 400 });
+	}
+
 	const trackingLines = TRACKING_FIELDS.map((field) => {
 		const value = payload[field]?.trim();
-		return value ? `${field}: ${value}` : null;
+		return value ? `${field}: ${escapeHtml(value)}` : null;
 	}).filter(Boolean);
 
 	const textLines = [
 		'🔔 Нова заявка з сайту EIF27:',
 		'',
-		`Джерело: ${formSource}`,
-		`Ім'я: ${name}`,
-		email ? `Email: ${email}` : null,
-		`Телефон: ${phone}`,
-		ticketTitle ? `Квиток: ${ticketTitle}` : null,
+		`Джерело: ${escapeHtml(formSource)}`,
+		`Ім'я: ${escapeHtml(name)}`,
+		email ? `Email: ${escapeHtml(email)}` : null,
+		`Телефон: ${escapeHtml(phone)}`,
+		ticketTitle ? `Квиток: ${escapeHtml(ticketTitle)}` : null,
 		...trackingLines,
 	];
 	const text = textLines.filter((line): line is string => Boolean(line)).join('\n');

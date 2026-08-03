@@ -20,6 +20,7 @@ type FormValues = {
 type ContactPayload = FormValues & TrackingParams;
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const NAME_LETTER_PATTERN = /\p{L}/u;
 
 export default function Contact() {
 	const phoneMask = usePhoneMask();
@@ -47,6 +48,8 @@ export default function Contact() {
 			nextErrors.name = CONTACT_CONTENT.errors.nameRequired;
 		} else if (name.length < 2) {
 			nextErrors.name = CONTACT_CONTENT.errors.nameMinLength;
+		} else if (!NAME_LETTER_PATTERN.test(name)) {
+			nextErrors.name = CONTACT_CONTENT.errors.nameInvalid;
 		}
 
 		if (!email) {
