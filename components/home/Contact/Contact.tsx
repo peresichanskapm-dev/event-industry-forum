@@ -104,6 +104,9 @@ export default function Contact() {
 			form.reset();
 			phoneMask.reset();
 			setSubmitState('success');
+			window.setTimeout(() => {
+				window.location.href = 'https://kyiv.ticketsbox.com/event/event-industry-forum-2027.html';
+			}, 1200);
 		} catch {
 			setSubmitState('error');
 		} finally {
