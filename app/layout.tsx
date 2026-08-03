@@ -4,10 +4,29 @@ import './globals.scss';
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000';
 
+const title = 'EIF27 — Event Industry Forum';
+const description =
+	'25 лютого 2027, Київ, КВЦ «Парковий». THE NEXT EXPERIENCE — головна подія української івент-індустрії: понад 1500 учасників, 100+ спікерів, Event Expo та 8 тематичних треків.';
+
 export const metadata: Metadata = {
 	metadataBase: new URL(siteUrl),
-	title: 'EIF27 — Event Industry Forum',
-	description: '',
+	title,
+	description,
+	openGraph: {
+		title,
+		description,
+		url: siteUrl,
+		siteName: 'EIF27',
+		locale: 'uk_UA',
+		type: 'website',
+		images: [{ url: '/img/logo.svg' }],
+	},
+	twitter: {
+		card: 'summary',
+		title,
+		description,
+		images: ['/img/logo.svg'],
+	},
 };
 
 export default function RootLayout({
