@@ -1,0 +1,149 @@
+.tickets {
+	padding: 4rem 0;
+
+	@media (min-width: 992px) {
+		padding: 6rem 0;
+	}
+}
+
+.heading {
+	text-align: center;
+	margin-bottom: 3.2rem;
+}
+
+.swiper {
+	width: 100%;
+	padding-bottom: 2.4rem;
+}
+
+.fallbackScroller {
+	display: flex;
+	gap: 1.6rem;
+	overflow-x: auto;
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+
+	&::-webkit-scrollbar {
+		display: none;
+	}
+}
+
+.slide {
+	width: 41.9rem;
+	height: auto;
+}
+
+.scrollbar {
+	position: relative;
+	height: 0.4rem;
+	border-radius: 100rem;
+	background: var(--color-grey-border);
+
+	:global(.swiper-scrollbar-drag) {
+		background: var(--accent-gradient);
+	}
+}
+
+.card {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	padding: 3.2rem 2.4rem;
+	border: 1px solid var(--color-grey-border);
+	border-radius: 1.2rem;
+	background: var(--color-card);
+}
+
+.header {
+	text-align: center;
+}
+
+.title {
+	text-transform: uppercase;
+}
+
+.price {
+	// Gradient tuning for this text only (stops are shared in _vars.scss):
+	--brand-gradient-angle: 95deg;
+	--brand-gradient-size: 100% 100%;
+	--brand-gradient-position: 0% 0%;
+
+	margin-top: 0.8rem;
+	font-family: var(--font-heading), 'Unbounded', sans-serif;
+	font-size: 2.4rem;
+	font-weight: 700;
+	background-image: var(--brand-gradient);
+	background-size: var(--brand-gradient-size);
+	background-position: var(--brand-gradient-position);
+	background-repeat: no-repeat;
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
+}
+
+.divider {
+	height: 1px;
+	margin: 2.4rem 0;
+	background: var(--accent-gradient);
+}
+
+.listWrap {
+	position: relative;
+	flex: 1;
+}
+
+.listWrapFaded {
+	max-height: 24rem;
+	overflow: hidden;
+
+	&::after {
+		content: '';
+		position: absolute;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		height: 4.8rem;
+		background: linear-gradient(to bottom, transparent, var(--color-card));
+	}
+}
+
+.list {
+	display: flex;
+	flex-direction: column;
+	gap: 1.2rem;
+
+	li {
+		position: relative;
+		padding-left: 1.6rem;
+		font-size: 1.3rem;
+		color: var(--color-grey-muted);
+
+		&::before {
+			content: '';
+			position: absolute;
+			left: 0;
+			top: 0.6rem;
+			width: 0.5rem;
+			height: 0.5rem;
+			border-radius: 50%;
+			background: var(--accent-from);
+		}
+	}
+}
+
+.readMore {
+	margin-top: 1.2rem;
+	align-self: flex-start;
+	background: transparent;
+	color: var(--accent-from);
+	font-size: 1.3rem;
+	font-weight: 600;
+}
+
+.actions {
+	margin-top: 2.4rem;
+}
+
+.button {
+	text-align: center;
+}

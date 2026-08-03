@@ -1,0 +1,37 @@
+@use './styles/vars';
+@use './styles/reset';
+@use './styles/typography';
+
+:root {
+	--header-offset: 8rem;
+}
+
+html {
+	scroll-padding-top: var(--header-offset);
+}
+
+body {
+	--font-heading: var(--font-steppe), var(--font-fallback), sans-serif;
+	--font-body: var(--font-steppe), var(--font-fallback), sans-serif;
+	margin: 0;
+	color: var(--color-white);
+	background: var(--color-black);
+	font-family: var(--font-body);
+	font-size: 1.6rem;
+	-webkit-font-smoothing: antialiased;
+	text-rendering: optimizeLegibility;
+	overflow-x: hidden;
+}
+
+@media (max-width: 992px) {
+	:root {
+		--header-offset: 0rem;
+	}
+}
+
+.container {
+	width: 100%;
+	max-width: 121rem;
+	margin: 0 auto;
+	padding: 0 1.6rem;
+}

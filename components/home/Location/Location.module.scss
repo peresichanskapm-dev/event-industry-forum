@@ -1,0 +1,153 @@
+.location {
+	padding: 4rem 0;
+	overflow: hidden;
+
+	@media (min-width: 992px) {
+		padding: 6rem 0 12rem;
+	}
+}
+
+.heading {
+	text-align: center;
+	margin-bottom: 3.2rem;
+}
+
+.layout {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	gap: 4rem;
+
+	@media (min-width: 992px) {
+		display: block;
+		min-height: 42rem;
+	}
+}
+
+// Mobile: each group is its own overlap stage (2 tilted photos), with the card sandwiched
+// between the top and bottom pair. Desktop: back to one full-bleed absolute-positioned collage.
+.collage {
+	position: relative;
+	height: 22rem;
+
+	@media (min-width: 992px) {
+		position: static;
+		height: auto;
+		display: block;
+	}
+}
+
+.photo {
+	position: absolute;
+	border-radius: 0.8rem;
+	overflow: hidden;
+	box-shadow: 0 1.2rem 3.2rem rgba(0, 0, 0, 0.4);
+
+	@media (min-width: 992px) {
+		border-radius: 0.4rem;
+	}
+}
+
+// Rotation is already baked into each photo asset (tilted card cut into a transparent canvas),
+// so an extra CSS rotate here just adds on top of that — keep mobile angles subtle.
+// Desktop positions tuned by hand via DevEditablePhoto — see components/ui/DevEditablePhoto.
+.photo0 {
+	top: 0;
+	left: 0;
+	width: 68%;
+	height: 18rem;
+	transform: rotate(-3deg);
+	z-index: 1;
+
+	@media (min-width: 992px) {
+		top: 9.8rem;
+		left: 88.9rem;
+		right: auto;
+		bottom: auto;
+		width: 35.3rem;
+		height: 26.5rem;
+		transform: rotate(0deg);
+	}
+}
+
+.photo1 {
+	top: 3.2rem;
+	right: 0;
+	left: auto;
+	width: 68%;
+	height: 18rem;
+	transform: rotate(3deg);
+
+	@media (min-width: 992px) {
+		top: -4.5rem;
+		left: 75.6rem;
+		right: auto;
+		bottom: auto;
+		width: 35.3rem;
+		height: 26.5rem;
+		transform: rotate(0deg);
+	}
+}
+
+.photo2 {
+	top: 0;
+	left: 0;
+	width: 68%;
+	height: 18rem;
+	transform: rotate(3deg);
+
+	@media (min-width: 992px) {
+		top: -4.7rem;
+		left: 7.3rem;
+		right: auto;
+		bottom: auto;
+		width: 35.3rem;
+		height: 26.5rem;
+		transform: rotate(0deg);
+	}
+}
+
+.photo3 {
+	top: 3.2rem;
+	right: 0;
+	left: auto;
+	width: 68%;
+	height: 18rem;
+	transform: rotate(-3deg);
+	z-index: 1;
+
+	@media (min-width: 992px) {
+		top: 10.8rem;
+		left: -6.6rem;
+		right: auto;
+		bottom: auto;
+		width: 35.3rem;
+		height: 26.5rem;
+		transform: rotate(0deg);
+	}
+}
+
+.card {
+	position: relative;
+	z-index: 2;
+	padding: 3.2rem;
+	border: 1px solid var(--color-grey-border);
+	border-radius: 1.2rem;
+	background: var(--color-card);
+
+	@media (min-width: 992px) {
+		width: 46%;
+		margin: 0 auto;
+		padding: 3.2rem 4rem 4rem;
+		background: #000;
+	}
+
+	p + p {
+		margin-top: 1.6rem;
+	}
+}
+
+.title {
+	color: var(--accent-from);
+	margin-bottom: 1.6rem;
+}

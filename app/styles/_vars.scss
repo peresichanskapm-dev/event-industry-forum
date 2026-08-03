@@ -1,0 +1,22 @@
+:root {
+	--color-black: #010103;
+	--color-white: #ffffff;
+	--color-grey-border: rgba(255, 255, 255, 0.12);
+	--color-grey-muted: rgb(241 241 241 / 0.95);
+	--color-card: #0d0d10;
+	--color-error: #e5484d;
+
+	--accent-from: #2ed573;
+	--accent-to: #c7e000;
+	--accent-gradient: linear-gradient(90deg, var(--accent-from), var(--accent-to));
+
+	// Brand gradient (Figma "Linear" style) — same stops as the SVG icons.
+	// Stops are shared; each element tunes its own angle / scale / offset by
+	// overriding these three variables on itself.
+	--brand-gradient-stops: #0fbee4 0%, #19cd62 29%, #89f7c2 49%, #19cd62 74%, #e0d330 91%;
+	--brand-gradient-angle: 95deg;
+	--brand-gradient-size: 100% 100%;
+	--brand-gradient-position: 0% 0%;
+	--brand-gradient: linear-gradient(var(--brand-gradient-angle), var(--brand-gradient-stops));
+	--accent-text-gradient: var(--brand-gradient);
+}

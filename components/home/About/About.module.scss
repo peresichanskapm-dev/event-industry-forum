@@ -1,0 +1,81 @@
+.about {
+	padding: 4rem 0;
+
+	@media (min-width: 992px) {
+		padding: 6rem 0;
+	}
+}
+
+.intro {
+	max-width: 76rem;
+	margin: 0 auto 6rem;
+	text-align: center;
+}
+
+.lead {
+	color: var(--color-grey-muted);
+	font-size: 1.4rem;
+	opacity: 0.7;
+
+	@media (min-width: 992px) {
+		font-size: 2rem;
+	}
+}
+
+.quote {
+	margin-top: 2.4rem;
+	font-size: 1.4rem;
+	font-weight: 600;
+
+	// Gradient tuning for this text only (stops are shared in _vars.scss):
+	--brand-gradient-angle: 95deg;
+	--brand-gradient-size: 100% 100%;
+	--brand-gradient-position: 0% 0%;
+
+	background-image: var(--brand-gradient);
+	background-size: var(--brand-gradient-size);
+	background-position: var(--brand-gradient-position);
+	background-repeat: no-repeat;
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
+
+	@media (min-width: 992px) {
+		font-size: 2.4rem;
+	}
+}
+
+.heading {
+	text-align: center;
+	margin-bottom: 3.2rem;
+}
+
+.grid {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 1.6rem;
+
+	@media (min-width: 768px) {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	@media (min-width: 992px) {
+		grid-template-columns: repeat(4, 1fr);
+	}
+}
+
+.card {
+	padding: 3.2rem 2.4rem;
+	border: 1px solid var(--color-grey-border);
+	border-radius: 1.2rem;
+	background: var(--color-card);
+
+	h3 {
+		margin-top: 2rem;
+		margin-bottom: 0.8rem;
+	}
+
+	p {
+		color: var(--color-grey-muted);
+	}
+}

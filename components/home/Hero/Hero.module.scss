@@ -1,0 +1,222 @@
+.hero {
+	position: relative;
+	overflow: hidden;
+	padding: 4rem 0 6rem;
+
+	@media (min-width: 992px) {
+		padding: 6rem 0 10rem;
+	}
+}
+
+.wrap {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	gap: 3.2rem;
+
+	@media (min-width: 992px) {
+		flex-direction: row;
+		align-items: center;
+		gap: 4rem;
+	}
+}
+
+// Mobile: video sits as a background layer behind the text (position/size tuned by hand via
+// DevEditablePhoto, see Hero.tsx). Desktop: reverts to the original side-by-side block.
+.visual {
+	position: absolute;
+	inset: 0;
+	z-index: 0;
+	overflow: hidden;
+	opacity: 0.9;
+
+	@media (min-width: 992px) {
+		position: relative;
+		inset: auto;
+		z-index: auto;
+		flex: 0 0 auto;
+		width: 96.9rem;
+		height: 58.3rem;
+		max-width: none;
+		aspect-ratio: auto;
+		margin-left: calc(50% - 50vw - 19rem);
+	}
+}
+
+.videoBox {
+	position: absolute;
+	top: 10.1rem;
+	left: 6rem;
+	right: auto;
+	bottom: auto;
+	width: 58rem;
+	height: 37.1rem;
+	transform: rotate(0deg);
+
+	@media (min-width: 992px) {
+		top: -70;
+		left: -50;
+		right: auto;
+		bottom: auto;
+		width: 120%;
+		height: 120%;
+		transform: none;
+	}
+}
+
+.video {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.fadeRight {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	width: 45%;
+	background: linear-gradient(to right, transparent, var(--color-black));
+	pointer-events: none;
+
+	@media (min-width: 992px) {
+		width: 35%;
+	}
+}
+
+.fadeTop {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	height: 30%;
+	background: linear-gradient(to top, transparent, var(--color-black));
+	pointer-events: none;
+}
+
+.fadeBottom {
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	height: 40%;
+	background: linear-gradient(to bottom, transparent, var(--color-black));
+	pointer-events: none;
+}
+
+.content {
+	position: relative;
+	z-index: 1;
+
+	@media (min-width: 992px) {
+		flex: 0 0 50%;
+		max-width: 50%;
+	}
+}
+
+.meta {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 1.2rem;
+	margin-bottom: 1.6rem;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+}
+
+.date {
+	position: relative;
+	top: 0;
+	left: 0;
+	font-weight: 400;
+	opacity: 1;
+	color: var(--accent-from);
+}
+
+.location {
+	position: relative;
+	top: 0;
+	left: 50;
+	font-weight: 400;
+	opacity: 0.8;
+}
+
+.title {
+	position: relative;
+	top: 0;
+	left: 0;
+	font-weight: 200;
+	opacity: 1;
+	margin-top: 40px;;
+}
+
+.gradientText {
+	position: relative;
+	top: 0;
+	left: 0;
+	font-weight: 200;
+	opacity: 1;
+
+	// Gradient tuning for this text only (stops are shared in _vars.scss):
+	--brand-gradient-angle: 95deg;
+	--brand-gradient-size: 100% 100%;
+	--brand-gradient-position: 0% 0%;
+
+	background-image: var(--brand-gradient);
+	background-size: var(--brand-gradient-size);
+	background-position: var(--brand-gradient-position);
+	background-repeat: no-repeat;
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
+}
+
+.tagline {
+	position: relative;
+	top: 0;
+	left: 0;
+	max-width: 30rem;
+	margin-bottom: 8rem;
+	font-weight: 400;
+	opacity: 1;
+	text-transform: uppercase;
+	letter-spacing: 0.01em;
+	color: var(--color-white);
+
+	@media (min-width: 992px) {
+		max-width: none;
+	}
+}
+
+.description {
+	position: relative;
+	top: 0;
+	left: 0;
+	font-size: 1.5rem;
+	margin-top: 2.4rem;
+	font-weight: 400;
+	opacity: 0.6;
+	max-width: 63%;
+	margin-bottom: 13rem;
+
+	@media (min-width: 992px) {
+		max-width: none;
+		font-size: 1.7rem;
+	}
+}
+
+.actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1.6rem;
+	margin-top: 3.2rem;
+
+	a {
+		width: 100%;
+
+		@media (min-width: 992px) {
+			width: auto;
+		}
+	}
+}

@@ -1,0 +1,195 @@
+.history {
+	padding: 4rem 0;
+	overflow: hidden;
+
+	@media (min-width: 992px) {
+		padding: 6rem 0;
+	}
+}
+
+.heading {
+	text-align: center;
+	margin-bottom: 3.2rem;
+}
+
+.swiper {
+	width: 100%;
+	padding-bottom: 2.4rem;
+}
+
+.fallbackScroller {
+	display: flex;
+	gap: 1.6rem;
+	overflow-x: auto;
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+
+	&::-webkit-scrollbar {
+		display: none;
+	}
+}
+
+.slide {
+	width: 27rem;
+	height: auto;
+
+	@media (min-width: 992px) {
+		width: 30rem;
+	}
+}
+
+.slideCurrent {
+	width: 53rem;
+
+	@media (min-width: 992px) {
+		width: 59rem;
+	}
+}
+
+.scrollbar {
+	position: relative;
+	height: 0.2rem;
+	margin-bottom: 3.2rem;
+	border-radius: 100rem;
+	background: var(--color-grey-border);
+
+	&::before {
+		content: '';
+		position: absolute;
+		top: 50%;
+		left: -0.5rem;
+		width: 1.2rem;
+		height: 1.2rem;
+		border-radius: 50%;
+		background: var(--accent-from);
+		transform: translateY(-50%);
+	}
+
+	:global(.swiper-scrollbar-drag) {
+		opacity: 0;
+	}
+}
+
+.scrollbarFill {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	background: var(--accent-gradient);
+	border-radius: 100rem;
+	pointer-events: none;
+
+	&::after {
+		content: '';
+		position: absolute;
+		top: 50%;
+		right: -0.5rem;
+		width: 1.2rem;
+		height: 1.2rem;
+		border-radius: 50%;
+		background: var(--accent-to);
+		transform: translateY(-50%);
+	}
+}
+
+.card {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	border: 1px solid var(--color-grey-border);
+	border-radius: 1.2rem;
+	overflow: hidden;
+}
+
+.cardCurrent {
+	&::after {
+		content: '';
+		position: absolute;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		height: 16rem;
+		background: radial-gradient(120% 100% at 0% 100%, rgba(46, 213, 115, 0.35), transparent 70%);
+		pointer-events: none;
+		z-index: -1;
+	}
+
+	.year {
+		font-size: 4.8rem;
+	}
+
+	.description {
+		--brand-gradient-angle: 95deg;
+		--brand-gradient-size: 100% 100%;
+		--brand-gradient-position: 0% 0%;
+
+		font-size: 2.3rem;
+		font-weight: 800;
+		background-image: var(--brand-gradient);
+		background-size: var(--brand-gradient-size);
+		background-position: var(--brand-gradient-position);
+		background-repeat: no-repeat;
+		-webkit-background-clip: text;
+		background-clip: text;
+		color: transparent;
+	}
+}
+
+.photo {
+	position: relative;
+	width: 100%;
+	height: 14rem;
+	background: rgba(255, 255, 255, 0.04);
+
+	@media (min-width: 992px) {
+		height: 20rem;
+	}
+}
+
+.year {
+	padding: 1.6rem 2rem 0;
+	font-family: var(--font-heading), 'Unbounded', sans-serif;
+	font-size: 3.2rem;
+	font-weight: 700;
+}
+
+.yearGradient {
+	// Gradient tuning for this text only (stops are shared in _vars.scss):
+	--brand-gradient-angle: 95deg;
+	--brand-gradient-size: 100% 100%;
+	--brand-gradient-position: 0% 0%;
+
+	background-image: var(--brand-gradient);
+	background-size: var(--brand-gradient-size);
+	background-position: var(--brand-gradient-position);
+	background-repeat: no-repeat;
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
+}
+
+.description {
+	padding: 0.8rem 2rem 0;
+	font-size: 1.4rem;
+	opacity: 0.7;
+}
+
+.stats {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 1.6rem;
+	margin-top: auto;
+	padding: 1.6rem 2rem 2rem;
+}
+
+.statValue {
+	font-family: var(--font-heading), 'Unbounded', sans-serif;
+	font-size: 2rem;
+	font-weight: 700;
+}
+
+.statLabel {
+	color: var(--color-grey-muted);
+	font-size: 1.2rem;
+}

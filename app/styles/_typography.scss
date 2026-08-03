@@ -1,0 +1,74 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+span,
+div,
+a,
+li,
+textarea,
+input,
+button,
+input::placeholder,
+textarea::placeholder {
+	font-size: 1.4rem;
+	font-style: normal;
+	line-height: 120%;
+}
+
+span {
+	font-size: inherit;
+	color: inherit;
+}
+
+a,
+button {
+	touch-action: manipulation;
+}
+
+h1,
+h2,
+h3,
+h4 {
+	font-family: var(--font-heading), 'Unbounded', sans-serif;
+	text-transform: uppercase;
+}
+
+h1 {
+	font-size: 4rem;
+	line-height: 100%;
+	font-weight: 600;
+
+	@media (min-width: 992px) {
+		font-size: 7.2rem;
+	}
+}
+
+h2 {
+	font-size: 2.8rem;
+	font-weight: 600;
+	letter-spacing: -0.01em;
+
+	@media (min-width: 992px) {
+		font-size: 3.8rem;
+	}
+}
+
+h3 {
+	font-size: 1.8rem;
+	font-weight: 600;
+	line-height: 130%;
+}
+
+p {
+	font-size: 1.5rem;
+	font-weight: 400;
+	line-height: 150%;
+	color: var(--color-white);
+
+	@media (min-width: 992px) {
+		font-size: 1.6rem;
+	}
+}
