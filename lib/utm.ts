@@ -1,4 +1,4 @@
-export const TRACKING_FIELDS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'] as const;
+export const TRACKING_FIELDS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'fbclid'] as const;
 
 export type TrackingField = (typeof TRACKING_FIELDS)[number];
 
@@ -12,6 +12,7 @@ const EMPTY_TRACKING: TrackingParams = {
 	utm_campaign: '',
 	utm_term: '',
 	utm_content: '',
+	fbclid: '',
 };
 
 export function getTrackingForForm(): TrackingParams {

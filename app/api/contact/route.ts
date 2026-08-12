@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import nodemailer from 'nodemailer';
 import { isPhoneComplete } from '@/lib/phoneMask';
 import { TRACKING_FIELDS, type TrackingField } from '@/lib/utm';
 
@@ -14,6 +15,13 @@ type Payload = {
 
 const NAME_LETTER_PATTERN = /\p{L}/u;
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+const LEAD_EMAIL_TO = 'eif@globalevents.planfix.ua';
+const LEAD_EMAIL_SUBJECT = 'Заявка з форми сайту EIF';
+
+const TRACKING_FIELD_LABELS: Partial<Record<TrackingField, string>> = {
+	fbclid: 'Click-ID',
+};
 
 function escapeHtml(value: string): string {
 	return value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -50,35 +58,58 @@ export async function POST(request: Request) {
 		return NextResponse.json({ error: 'Invalid email.' }, { status: 400 });
 	}
 
-	const trackingLines = TRACKING_FIELDS.map((field) => {
-		const value = payload[field]?.trim();
-		return value ? `${field}: ${escapeHtml(value)}` : null;
-	}).filter(Boolean);
+	const buildLeadLines = (escape: (value: string) => string): string[] => {
+		const trackingLines = TRACKING_FIELDS.map((field) => {
+			const value = payload[field]?.trim();
+			const label = TRACKING_FIELD_LABELS[field] ?? field;
+			return value ? `${label}: ${escape(value)}` : null;
+		});
 
-	const textLines = [
-		'🔔 Нова заявка з сайту EIF27:',
-		'',
-		`Джерело: ${escapeHtml(formSource)}`,
-		`Ім'я: ${escapeHtml(name)}`,
-		email ? `Email: ${escapeHtml(email)}` : null,
-		`Телефон: ${escapeHtml(phone)}`,
-		ticketTitle ? `Квиток: ${escapeHtml(ticketTitle)}` : null,
-		...trackingLines,
-	];
-	const text = textLines.filter((line): line is string => Boolean(line)).join('\n');
+		return [
+			`Джерело: ${escape(formSource)}`,
+			`Ім'я: ${escape(name)}`,
+			email ? `Email: ${escape(email)}` : null,
+			`Телефон: ${escape(phone)}`,
+			ticketTitle ? `Квиток: ${escape(ticketTitle)}` : null,
+			...trackingLines,
+		].filter((line): line is string => Boolean(line));
+	};
+
+	const telegramText = ['🔔 Нова заявка з сайту EIF27:', '', ...buildLeadLines(escapeHtml)].join('\n');
 
 	const telegramResponse = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
 		method: 'POST',
 		headers: { 'Content-Type': 'application/json' },
 		body: JSON.stringify({
 			chat_id: chatId,
-			text,
+			text: telegramText,
 			parse_mode: 'HTML',
 		}),
 	});
 
 	if (!telegramResponse.ok) {
 		return NextResponse.json({ error: 'Telegram request failed.' }, { status: 502 });
+	}
+
+	const smtpHost = process.env.SMTP_HOST;
+	const smtpPort = process.env.SMTP_PORT;
+	const smtpUser = process.env.SMTP_USER;
+	const smtpPass = process.env.SMTP_PASS;
+
+	if (smtpHost && smtpPort && smtpUser && smtpPass) {
+		const transporter = nodemailer.createTransport({
+			host: smtpHost,
+			port: Number(smtpPort),
+			secure: Number(smtpPort) === 465,
+			auth: { user: smtpUser, pass: smtpPass },
+		});
+
+		await transporter.sendMail({
+			from: process.env.SMTP_FROM || smtpUser,
+			to: LEAD_EMAIL_TO,
+			subject: LEAD_EMAIL_SUBJECT,
+			text: buildLeadLines((value) => value).join('\n'),
+		});
 	}
 
 	return NextResponse.json({ ok: true });
