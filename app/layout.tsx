@@ -6,7 +6,7 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000';
 
 const title = 'EIF27 — Event Industry Forum';
 const description =
-	'25 лютого 2027, Київ, КВЦ «Парковий». THE NEXT EXPERIENCE — головна подія української івент-індустрії: понад 1500 учасників, 100+ спікерів, Event Expo та 8 тематичних треків.';
+	'25 лютого 2027, Київ, КВЦ «Парковий». THE NEXT EXPERIENCE — головна подія української івент-індустрії: Event Expo та 8 тематичних треків.';
 
 export const metadata: Metadata = {
 	metadataBase: new URL(siteUrl),
