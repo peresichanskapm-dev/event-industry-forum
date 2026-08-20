@@ -40,4 +40,14 @@ export const SPEAKERS: Speaker[] = [
 		name: 'Наталі Шестакова',
 		bio: 'Співзасновниця агенції Plombir event',
 	},
+	{
+		photo: '/img/speakers/slupskyi.webp',
+		name: 'Сергій Слупський',
+		bio: 'Засновник Slupsky Agency, 25 років в івент-індустрії, понад 2000 проектів в 47 країнах на 6 континентах, офіси в Києві та Амстердамі, володар премії BEA World 2018/2019/2021/2022 та десятка інших нагород. Вірить в силу івентів та України.',
+	},
+	{
+		photo: '/img/speakers/rynskyi.webp',
+		name: 'Денис Ринський',
+		bio: 'Founder & CEO Global Events, CMO Emily Resort, Founder Event Industry Forum.',
+	},
 ];

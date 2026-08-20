@@ -9,6 +9,7 @@ import Expo from '@/components/home/Expo/Expo';
 import Speakers from '@/components/home/Speakers/Speakers';
 import Tickets from '@/components/home/Tickets/Tickets';
 import PricingSchedule from '@/components/home/PricingSchedule/PricingSchedule';
+import GeneralPartner from '@/components/home/GeneralPartner/GeneralPartner';
 import Location from '@/components/home/Location/Location';
 import FAQ from '@/components/home/FAQ/FAQ';
 import Contact from '@/components/home/Contact/Contact';
@@ -29,6 +30,7 @@ export default function HomePage() {
 				<Speakers />
 				<Tickets />
 				<PricingSchedule />
+				<GeneralPartner />
 				<Location />
 				<FAQ />
 				<Contact />
