@@ -1,6 +1,6 @@
 export const HERO_CONTENT = {
 	date: '25/02/2027',
-	location: 'Київ, КВЦ «Парковий»',
+	location: 'Львів, Emily Resort',
 	titleLine1: 'THE NEXT',
 	titleLine2: 'EXPERIENCE',
 	tagline: 'Новий досвід | Новий рівень | Нова індустрія',

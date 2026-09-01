@@ -7,8 +7,8 @@ export type StatCard = {
 
 export const STATS_CARDS: StatCard[] = [
 	{
-		value: '150+',
-		label: 'експо-стендів',
+		value: 'Event Expo',
+		label: '',
 		description: 'Найбільше в Україні Event Expo з презентацією готових рішень, інновацій та підрядників.',
 		background: '/img/stats/card-2.png',
 	},

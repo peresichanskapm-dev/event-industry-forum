@@ -7,7 +7,7 @@ export default function Tracks() {
 		<section className={s.tracks}>
 			<div className="container">
 				<h2 className={s.heading} data-reveal>
-					EIF Kyiv 2027 - <span className={s.gradientText}>як це буде?</span>
+					EIF 2027 - <span className={s.gradientText}>як це буде?</span>
 				</h2>
 				<p className={s.subheading} data-reveal>
 					8 треків — 8 напрямків для розвитку, партнерств і нових можливостей

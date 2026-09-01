@@ -10,7 +10,6 @@ import Speakers from '@/components/home/Speakers/Speakers';
 import Tickets from '@/components/home/Tickets/Tickets';
 import PricingSchedule from '@/components/home/PricingSchedule/PricingSchedule';
 import GeneralPartner from '@/components/home/GeneralPartner/GeneralPartner';
-import Location from '@/components/home/Location/Location';
 import FAQ from '@/components/home/FAQ/FAQ';
 import Contact from '@/components/home/Contact/Contact';
 import ScrollReveal from '@/components/ui/ScrollReveal/ScrollReveal';
@@ -31,7 +30,6 @@ export default function HomePage() {
 				<Tickets />
 				<PricingSchedule />
 				<GeneralPartner />
-				<Location />
 				<FAQ />
 				<Contact />
 			</main>

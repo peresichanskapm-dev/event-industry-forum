@@ -10,8 +10,10 @@
 
 	@media (min-width: 992px) {
 		flex-direction: row;
+		flex-wrap: wrap;
 		align-items: center;
 		justify-content: space-between;
+		gap: 2.4rem 3.2rem;
 	}
 }
 
@@ -36,6 +38,14 @@
 
 	@media (min-width: 992px) {
 		display: flex;
+	}
+}
+
+.contact {
+	@media (min-width: 992px) {
+		flex: 0 1 auto;
+		max-width: 22rem;
+		text-align: center;
 	}
 }
 

@@ -3,7 +3,7 @@ import HomePage from '@/components/pages/HomePage';
 
 export const metadata: Metadata = {
 	title: 'EIF27 — Event Industry Forum',
-	description: 'Event Industry Forum 2027. 25 лютого 2027, Київ, КВЦ «Парковий».',
+	description: 'Event Industry Forum 2027. 25 лютого 2027, Львів, Emily Resort.',
 	alternates: {
 		canonical: '/',
 	},

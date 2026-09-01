@@ -7,7 +7,6 @@ export default function About() {
 		<section className={s.about} id="about">
 			<div className="container">
 				<div className={s.intro} data-reveal>
-					<p className={s.lead}>{ABOUT_INTRO.lead}</p>
 					<p className={s.quote}>{ABOUT_INTRO.quote}</p>
 				</div>
 

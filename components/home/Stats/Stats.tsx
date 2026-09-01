@@ -12,10 +12,10 @@ export default function Stats() {
 
 				<div className={s.grid}>
 					{STATS_CARDS.map((card, index) => (
-						<article className={s.card} key={card.label} data-reveal data-reveal-delay={Math.min(index * 0.1, 0.3)}>
+						<article className={s.card} key={card.value} data-reveal data-reveal-delay={Math.min(index * 0.1, 0.3)}>
 							<Image src={card.background} alt="" fill className={s.background} sizes="(max-width: 992px) 100vw, 33vw" />
 							<p className={s.value}>{card.value}</p>
-							<p className={s.label}>{card.label}</p>
+							{card.label && <p className={s.label}>{card.label}</p>}
 							<p className={s.description}>{card.description}</p>
 						</article>
 					))}
