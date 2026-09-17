@@ -104,12 +104,16 @@ export async function POST(request: Request) {
 			auth: { user: smtpUser, pass: smtpPass },
 		});
 
-		await transporter.sendMail({
-			from: process.env.SMTP_FROM || smtpUser,
-			to: LEAD_EMAIL_TO,
-			subject: LEAD_EMAIL_SUBJECT,
-			text: buildLeadLines((value) => value).join('\n'),
-		});
+		try {
+			await transporter.sendMail({
+				from: process.env.SMTP_FROM || smtpUser,
+				to: LEAD_EMAIL_TO,
+				subject: LEAD_EMAIL_SUBJECT,
+				text: buildLeadLines((value) => value).join('\n'),
+			});
+		} catch (error) {
+			console.error('Failed to send lead email notification:', error);
+		}
 	}
 
 	return NextResponse.json({ ok: true });
