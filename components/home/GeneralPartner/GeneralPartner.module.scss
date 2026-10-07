@@ -1,4 +1,6 @@
 .generalPartner {
+	--partner-green-gradient-stops: #dfd400 0%, #06b44e 100%;
+
 	padding: 4rem 0;
 
 	@media (min-width: 992px) {
@@ -27,14 +29,20 @@
 
 .logoWrap {
 	flex-shrink: 0;
-}
-
-.logo {
-	width: 20rem;
-	height: auto;
+	display: flex;
+	justify-content: center;
 
 	@media (min-width: 992px) {
 		width: 29.1rem;
+	}
+}
+
+.logo {
+	width: min(20rem, var(--logo-desktop-width));
+	height: auto;
+
+	@media (min-width: 992px) {
+		width: var(--logo-desktop-width);
 	}
 }
 
@@ -44,13 +52,27 @@
 	@media (min-width: 992px) {
 		display: block;
 		align-self: stretch;
-		width: 1px;
-		background: var(--color-grey-border);
+		flex-shrink: 0;
+		min-height: 8.3rem;
+		// Long text made flex shrink a 1px-wide box to a fraction of a pixel, which
+		// vanished at some zoom levels; a border never shrinks and always paints.
+		border-left: 1px solid;
+		border-image: linear-gradient(180deg, var(--partner-green-gradient-stops)) 1;
 	}
 }
 
 .description {
 	color: var(--color-grey-muted);
+
+	p {
+		color: inherit;
+	}
+
+	@media (min-width: 992px) {
+		p {
+			font-size: 1.8rem;
+		}
+	}
 }
 
 .gradientText {
@@ -59,11 +81,33 @@
 	--brand-gradient-size: 100% 100%;
 	--brand-gradient-position: 0% 0%;
 
-	background-image: var(--brand-gradient);
+	// --brand-gradient resolves on :root, so per-element angle overrides only
+	// take effect when the gradient is rebuilt here from the stops.
+	background-image: linear-gradient(var(--brand-gradient-angle), var(--brand-gradient-stops));
 	background-size: var(--brand-gradient-size);
 	background-position: var(--brand-gradient-position);
 	background-repeat: no-repeat;
 	-webkit-background-clip: text;
 	background-clip: text;
 	color: transparent;
+}
+
+.name {
+	--brand-gradient-angle: 174.3deg;
+
+	font-size: 2rem;
+
+	@media (min-width: 992px) {
+		font-size: 2.4rem;
+	}
+}
+
+.tagline {
+	--brand-gradient-angle: 164.5deg;
+
+	font-weight: 500;
+}
+
+.nameGreen {
+	background-image: linear-gradient(-90deg, var(--partner-green-gradient-stops));
 }
