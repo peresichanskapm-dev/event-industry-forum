@@ -1,6 +1,7 @@
 export type PartnerTextSegment = {
 	text: string;
 	style?: 'name' | 'nameGreen' | 'accent' | 'tagline';
+	href?: string;
 };
 
 export type PartnerBlock = {
@@ -53,7 +54,11 @@ export const PARTNER_BLOCKS: PartnerBlock[] = [
 			],
 			[
 				{
-					text: 'Спеціально для гостей Event Industry Forum ми підготували промокод Global10 на 10% знижку на проживання в період з 24.02.2027 до 27.02.2027. Бронювання на офіційному сайті www.city-inn.com.ua. Для гарантії бронювання готель зв’яжеться для організації оплати першої ночі проживання.',
+					text: 'Спеціально для гостей Event Industry Forum ми підготували промокод Global10 на 10% знижку на проживання в період з 24.02.2027 до 27.02.2027. Бронювання на офіційному сайті ',
+				},
+				{ text: 'www.city-inn.com.ua', href: 'https://www.city-inn.com.ua' },
+				{
+					text: '. Для гарантії бронювання готель зв’яжеться для організації оплати першої ночі проживання.',
 				},
 			],
 			[{ text: 'Чекаємо у City Inn — з кавою, комфортом і чесним сервісом.', style: 'tagline' }],

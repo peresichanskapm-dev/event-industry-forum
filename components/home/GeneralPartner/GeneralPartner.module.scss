@@ -68,6 +68,17 @@
 		color: inherit;
 	}
 
+	.link {
+		color: inherit;
+		text-decoration: underline;
+		text-underline-offset: 0.3rem;
+		transition: color 0.2s;
+
+		&:hover {
+			color: var(--color-white);
+		}
+	}
+
 	@media (min-width: 992px) {
 		p {
 			font-size: 1.8rem;

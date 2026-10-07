@@ -38,7 +38,17 @@ export default function GeneralPartner() {
 								{block.paragraphs.map((paragraph, i) => (
 									<p key={i}>
 										{paragraph.map((segment, j) =>
-											segment.style ? (
+											segment.href ? (
+												<a
+													key={j}
+													href={segment.href}
+													target="_blank"
+													rel="noopener noreferrer"
+													className={s.link}
+												>
+													{segment.text}
+												</a>
+											) : segment.style ? (
 												<span key={j} className={SEGMENT_CLASS[segment.style]}>
 													{segment.text}
 												</span>
