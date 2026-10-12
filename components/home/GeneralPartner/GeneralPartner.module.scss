@@ -27,6 +27,12 @@
 	}
 }
 
+.logoOnly {
+	@media (min-width: 992px) {
+		justify-content: center;
+	}
+}
+
 .logoWrap {
 	flex-shrink: 0;
 	display: flex;

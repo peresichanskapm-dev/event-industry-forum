@@ -14,7 +14,7 @@ export type PartnerBlock = {
 		height: number;
 		desktopWidth: string;
 	};
-	paragraphs: PartnerTextSegment[][];
+	paragraphs?: PartnerTextSegment[][];
 };
 
 export const PARTNER_BLOCKS: PartnerBlock[] = [
@@ -81,5 +81,16 @@ export const PARTNER_BLOCKS: PartnerBlock[] = [
 				{ text: ' — джерело сили та відновлення на шляху до Щасливої Країни Майбутнього.' },
 			],
 		],
+	},
+	{
+		id: 'design-animation-partner',
+		heading: 'Design & Animation Partner',
+		logo: {
+			src: '/img/partners/sndot-logo.webp',
+			alt: 'Sndot',
+			width: 1018,
+			height: 298,
+			desktopWidth: '29.1rem',
+		},
 	},
 ];

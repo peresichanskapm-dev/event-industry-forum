@@ -20,7 +20,11 @@ export default function GeneralPartner() {
 							{block.heading}
 						</h2>
 
-						<div className={s.row} data-reveal data-reveal-delay="0.1">
+						<div
+							className={block.paragraphs ? s.row : `${s.row} ${s.logoOnly}`}
+							data-reveal
+							data-reveal-delay="0.1"
+						>
 							<div
 								className={s.logoWrap}
 								style={{ '--logo-desktop-width': block.logo.desktopWidth } as CSSProperties}
@@ -33,32 +37,36 @@ export default function GeneralPartner() {
 									className={s.logo}
 								/>
 							</div>
-							<div className={s.divider} aria-hidden="true" />
-							<div className={s.description}>
-								{block.paragraphs.map((paragraph, i) => (
-									<p key={i}>
-										{paragraph.map((segment, j) =>
-											segment.href ? (
-												<a
-													key={j}
-													href={segment.href}
-													target="_blank"
-													rel="noopener noreferrer"
-													className={s.link}
-												>
-													{segment.text}
-												</a>
-											) : segment.style ? (
-												<span key={j} className={SEGMENT_CLASS[segment.style]}>
-													{segment.text}
-												</span>
-											) : (
-												segment.text
-											),
-										)}
-									</p>
-								))}
-							</div>
+							{block.paragraphs && (
+								<>
+									<div className={s.divider} aria-hidden="true" />
+									<div className={s.description}>
+										{block.paragraphs.map((paragraph, i) => (
+											<p key={i}>
+												{paragraph.map((segment, j) =>
+													segment.href ? (
+														<a
+															key={j}
+															href={segment.href}
+															target="_blank"
+															rel="noopener noreferrer"
+															className={s.link}
+														>
+															{segment.text}
+														</a>
+													) : segment.style ? (
+														<span key={j} className={SEGMENT_CLASS[segment.style]}>
+															{segment.text}
+														</span>
+													) : (
+														segment.text
+													),
+												)}
+											</p>
+										))}
+									</div>
+								</>
+							)}
 						</div>
 					</div>
 				</section>
